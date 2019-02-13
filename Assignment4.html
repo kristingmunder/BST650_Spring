@@ -136,13 +136,13 @@ der_like_110_70 &lt;- function (p) {
   ((70*(1-p)-40*p)/(p*(1-p)))^2
 }
 
-fischers_11_7 &lt;- sapply(seq(from =0.001, to=0.999, by=0.001), der_like_11_7)
-mean(fischers_11_7)</code></pre>
+fishers_11_7 &lt;- sapply(seq(from =0.001, to=0.999, by=0.001), der_like_11_7)
+mean(fishers_11_7)</code></pre>
 <pre><code>## [1] 106123.5</code></pre>
-<pre class="r"><code>fischers_110_70 &lt;- sapply(seq(from =0.001, to=0.999, by=0.001), der_like_110_70)
-mean(fischers_110_70)</code></pre>
+<pre class="r"><code>fishers_110_70 &lt;- sapply(seq(from =0.001, to=0.999, by=0.001), der_like_110_70)
+mean(fishers_110_70)</code></pre>
 <pre><code>## [1] 10612354</code></pre>
-<pre class="r"><code>#Fisher's of n=110 and H=70 is 100 times greater than Fisher's of n=11 and H=7, meaning a more precise value that maximizes L(p|x).</code></pre>
+<p>Fisher’s of n=110 and H=70 is 100 times greater than Fisher’s of n=11 and H=7, meaning a more precise value that maximizes L(p|x). Additionally, when we have more coin flips, we therefore gain more information about our data meaning that we have a more precise estimate for p. This is reflected in the Fisher’s information, because when n=110 Fisher’s information is greater than when n=11.</p>
 
 
 
