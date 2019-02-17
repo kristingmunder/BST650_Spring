@@ -1,0 +1,29 @@
+---
+title: "Assignment5"
+author: "Kristin Gmunder"
+date: "2/17/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+A patient has a rare disease where P(having disease)=0.001.  Using the binomial distribution to find the probability of accruing 0 patients if interviewing 400.
+```{r}
+choose(400,0)*(0.001^0)*(0.999^400)
+```
+There is a probability of 67% that if 400 patients are interviewed, 0 will have disease.
+
+A patient has a less rare disease where P(having disease)=0.05.  Modeling the probability of finding 150 patients when we check 10,000 charts using negative binomial.
+```{r}
+choose(10149, 10000)*((0.95)^150)*((0.05)^10000)
+```
+It appears that this calculation seems to be beyond R's range for both the choose function and the factorial function.  So I receive an answer of infinity for the first term, thus this probability cannot be calculated.
+
+
+Using the geometric distribution to find the probability of interviewing 20 subjects until seeing the first patient with disease (same probability of disease within the population as before).
+```{r}
+(.05)*(0.95)^20
+```
+With a probability of 1.79% it is very unlikely that we will find a patient with disease in the first 20 people interviewed.
