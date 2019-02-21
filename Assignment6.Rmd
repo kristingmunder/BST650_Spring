@@ -1,0 +1,52 @@
+---
+title: "Assignment6"
+author: "Kristin Gmunder"
+date: "2/19/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+If rate(\lambda) is 150, what is the probability of accruing more than 200 patients?  This is equivalent to taking 1 - the sum of probabilities from 0 to 199.
+```{r}
+pois_fun <- function(x, rate) {
+  (rate^x)*exp(-rate)/factorial(x)
+}
+
+1-sum(sapply(0:199, pois_fun, rate = 150))
+```
+R is unable to calculate the probability of accruing more than 200 patients as the numbers are out of range.
+
+```{r}
+pois_fun2 <- function(x, rate) {
+  logFact <- sum(log(1:x))
+  exp(x*log(rate) - rate - logFact)
+}
+
+1-sum(sapply(0:199, pois_fun2, rate = 150))
+```
+R gives an answer of -Inf, because again R is unable to calculate the probability of accruing more than 200 patients as the numbers are out of range.
+
+```{r}
+pois_fun3 <- function(x, rate) {
+  exp(x*log(rate) - rate - lgamma(x+1))
+}
+
+1-sum(sapply(0:199, pois_fun3, rate = 150))
+```
+R gives an answer of 5.709689e-05 for the probability of accruing more than 200 patients.  This probability is so small, because \lambda is 150 meaning it is very unlikely (almost impossible) to accrue more than the rate.
+
+```{R}
+1-ppois(200, 150)
+```
+R gives an answer of 4.205886e-05 for the probability of accruing more than 200 patients.  This probability is so small, because \lambda is 150 meaning it is very unlikely (almost impossible) to accrue more than the rate.
+
+Part 2: Plot of Logit Function
+```{r}
+p <- seq(0.0001, 0.9999, length.out=1000)
+y <- log(p/(1-p))
+plot(p,y)
+hist(y)
+```
