@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 For $\lambda = 2$, plot gamma distribution for a few values of $\alpha$:
 ```{r}
 gamma_fun <- function(lambda, alpha, x) {
-  ((alpha^lambda)/factorial(alpha-1))*(x^(alpha-1)*exp(-alpha*x))
+  ((lambda^alpha)/factorial(alpha-1))*(x^(alpha-1)*exp(-lambda*x))
 }
 
 plot(seq(1:100), gamma_fun(2, 1, seq(1:100)))
