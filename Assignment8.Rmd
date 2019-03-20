@@ -1,0 +1,47 @@
+---
+title: "Assignment8"
+author: "Kristin Gmunder"
+date: "3/19/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+**Question 2**  
+Plot errF from = 1 to 100.  For what values of n is this approximation good?
+```{r}
+f1 <- function(n) {
+  sum(sapply(1:n, log))
+}
+
+f2 <- function(n) {
+  n*log(n) - n + 1
+}
+
+errF <- function(n) {
+  f1(n)/f2(n)
+}
+
+plot(seq(1:100), sapply(1:100,errF))
+errF(15)
+```
+This approximation is good for n = 15 as this is when the errF function equals 1 with minimal error (less than 5% error).
+
+**Question 3**  
+Write f3(n) with 0.5*ln(2*pi*n) instead of 1.  Repeat question 2.
+```{r}
+f3 <- function(n) {
+  n*log(n) - n + 0.5*log(2*pi*n)
+}
+
+
+errF2 <- function(n) {
+  f1(n)/f3(n)
+}
+
+plot(seq(1:100), sapply(1:100,errF2))
+errF2(3)
+```
+This approximation is good for n = 3 as this is when the errF2 function equals 1 with minimal error (1% error).
+
